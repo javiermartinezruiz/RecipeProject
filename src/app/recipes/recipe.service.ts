@@ -31,4 +31,8 @@ export class RecipeService {
     //Se obtiene una copia y no la referencia directa
     return this.recipes.slice();
   }
+
+  getRecipeById(index: number): Recipe{
+    return this.recipes[index];
+  }
 }

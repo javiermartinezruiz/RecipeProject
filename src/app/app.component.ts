@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  loadedMenu = 'recipe';
-
-  onNavigate(event){
-    console.log("Event: ", event);
-    this.loadedMenu = event;
-  }
 }

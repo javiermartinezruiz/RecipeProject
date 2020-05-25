@@ -9,8 +9,6 @@ import {ShoppingService} from "../shopping.service";
 })
 export class ShoppingFormComponent implements OnInit {
 
- // @Output() selectedIngredient = new EventEmitter<Ingredient>();
-
   ingredient: Ingredient;
   constructor(private shoppingService: ShoppingService) { }
 
@@ -20,7 +18,6 @@ export class ShoppingFormComponent implements OnInit {
   add(name:HTMLInputElement, amount: HTMLInputElement){
     this.ingredient = new Ingredient(name.value, amount.valueAsNumber);
     this.shoppingService.addIngredient(this.ingredient);
-   // this.selectedIngredient.emit(this.ingredient);
   }
 
   delete(){
