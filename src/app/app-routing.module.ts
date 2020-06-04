@@ -6,6 +6,8 @@ import {RecipeFormComponent} from "./recipes/recipe-form/recipe-form.component";
 import {ShoppingFormComponent} from "./shopping/shopping-form/shopping-form.component";
 import {RecipeDefaultComponent} from "./recipes/recipe-default/recipe-default.component";
 import {RecipeEditComponent} from "./recipes/recipe-edit/recipe-edit.component";
+import {RecipesResolverService} from "./recipes/recipes-resolver.service";
+import {AuthComponent} from "./auth/auth.component";
 
 const routes: Routes = [
   {path:'', redirectTo:'/recipes', pathMatch: 'full'},
@@ -23,7 +25,8 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        component: RecipeFormComponent
+        component: RecipeFormComponent,
+        resolve: [RecipesResolverService]
       },
       {
         path: ':id/edit',
@@ -38,6 +41,10 @@ const routes: Routes = [
         path: ':id',
         component: ShoppingFormComponent
     }]
+  },
+  {
+    path: 'auth',
+    component: AuthComponent
   }
 ];
 

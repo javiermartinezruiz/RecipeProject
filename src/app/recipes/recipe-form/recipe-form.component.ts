@@ -14,6 +14,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
   recipe: Recipe;
+  id: number;
 
   constructor(private shoppingService: ShoppingService,
               private recipeService: RecipeService,
@@ -23,6 +24,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.activatedRoute.params.subscribe(
       (params:Params)=> {
+        this.id = +params['id'];
         this.recipe = this.recipeService.getRecipeById(+params['id']);
       }
     )
@@ -41,6 +43,13 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   onEditRecipe(){
     this.router.navigate(['edit'], {relativeTo: this.activatedRoute})
     // this.router.navigate(['../', this.id], {relativeTo:this.activatedRoute});
+  }
+
+  onDeleteRecipe(){
+    //Another way using the active route
+    //const index = this.activatedRoute.snapshot.params.id;
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 
 }

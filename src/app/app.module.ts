@@ -9,7 +9,7 @@ import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component
 import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 import { ShoppingFormComponent } from './shopping/shopping-form/shopping-form.component';
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DropdownDirective} from "./shared/dropdown.directive";
 import { Dropdown2Directive } from './shared/dropdown2.directive';
 import { Dropdown3Directive } from './shared/dropdown3.directive';
@@ -17,6 +17,10 @@ import {ShoppingService} from "./shopping/shopping.service";
 import {AppRoutingModule} from "./app-routing.module";
 import { RecipeDefaultComponent } from './recipes/recipe-default/recipe-default.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import {RecipeService} from "./recipes/recipe.service";
+import {HttpClientModule} from "@angular/common/http";
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +37,17 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     Dropdown3Directive,
     RecipeDefaultComponent,
     RecipeEditComponent,
+    AuthComponent,
+    LoadingSpinnerComponent,
   ],
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
         AppRoutingModule
     ],
-  providers: [ShoppingService],
+  providers: [ShoppingService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
