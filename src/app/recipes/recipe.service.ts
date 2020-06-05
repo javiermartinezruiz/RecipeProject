@@ -67,13 +67,9 @@ export class RecipeService {
   }
 
   fetchData(){
-    return this.authService.user.pipe(
-      take(1),  //subscribe, take 1 result and unsubscribe automatically
-      exhaustMap(user=> { //replace the observable
-        return this.httpClient.get<Recipe[]>(this.url, {
-          params: new HttpParams().set('auth', user.token)
-        })
-      }),
+    return this.httpClient
+    .get<Recipe[]>(this.url)
+    .pipe(
       map(recipes=>{
         return recipes.map(recipe=>{
           return {
