@@ -37,6 +37,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   }
 
   onAddToShoppingList(){
+    console.log("Adding ingredients: ", this.recipe.ingredients);
     this.shoppingService.replaceIngredients(this.recipe.ingredients);
   }
 

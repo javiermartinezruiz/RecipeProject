@@ -10,7 +10,7 @@ export class Dropdown3Directive {
   @HostBinding('class.open') isOpen = false;
 
   @HostListener('document:click', ['$event']) toggleOpen(event: Event) {
-    console.log("Event: ", event)
+    console.log("Event 3: ", event);
     this.isOpen = this.elRef.nativeElement.contains(event.target) ? !this.isOpen : false;
   }
 
