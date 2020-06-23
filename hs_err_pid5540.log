@@ -1,0 +1,335 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 88080384 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2843), pid=5540, tid=5541
+#
+# JRE version:  (11.0.6+8) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.6+8-b765.40, mixed mode, sharing, tiered, compressed oops, serial gc, linux-amd64)
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P" (or dumping to /home/martz/Documents/SourceCode/Angular/RecipeProject/core.5540)
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: org.jetbrains.git4idea.http.GitAskPassApp Username for 'https://github.com': 
+
+Host: Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz, 1 cores, 7G, Ubuntu 14.04.6 LTS
+Time: Fri Jun 12 20:03:45 2020 -05 elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f5830013800):  JavaThread "Unknown thread" [_thread_in_vm, id=5541, stack(0x00007f5838db8000,0x00007f5838eb9000)]
+
+Stack: [0x00007f5838db8000,0x00007f5838eb9000],  sp=0x00007f5838eb72f0,  free space=1020k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xd61c01]  VMError::report_and_die(int, char const*, char const*, __va_list_tag*, Thread*, unsigned char*, void*, void*, char const*, int, unsigned long)+0x381
+V  [libjvm.so+0xd628ab]  VMError::report_and_die(Thread*, char const*, int, unsigned long, VMErrorType, char const*, __va_list_tag*)+0x2b
+V  [libjvm.so+0x651295]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*, ...)+0xc5
+V  [libjvm.so+0xb6c65a]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xda
+V  [libjvm.so+0xb641bf]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0xd59f7b]  VirtualSpace::expand_by(unsigned long, bool)+0x15b
+V  [libjvm.so+0x7b41f1]  Generation::Generation(ReservedSpace, unsigned long)+0xb1
+V  [libjvm.so+0x532dc9]  CardGeneration::CardGeneration(ReservedSpace, unsigned long, CardTableRS*)+0x39
+V  [libjvm.so+0xcf582b]  TenuredGeneration::TenuredGeneration(ReservedSpace, unsigned long, CardTableRS*)+0x2b
+V  [libjvm.so+0x7b4bec]  GenerationSpec::init(ReservedSpace, CardTableRS*)+0x1cc
+V  [libjvm.so+0x7a0b49]  GenCollectedHeap::initialize()+0x1f9
+V  [libjvm.so+0xd24a61]  Universe::initialize_heap()+0x41
+V  [libjvm.so+0xd24d36]  universe_init()+0x46
+V  [libjvm.so+0x8080f7]  init_globals()+0x57
+V  [libjvm.so+0xd003ea]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x30a
+V  [libjvm.so+0x8ae701]  JNI_CreateJavaVM+0x51
+C  [libjli.so+0x3c2f]  JavaMain+0x7f
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000000000b8b590, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x00007f5830013800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=5541, stack(0x00007f5838db8000,0x00007f5838eb9000)]
+
+Threads with active compile tasks:
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x0000000083200000, size: 1998 MB, Compressed Oops mode: Non-zero based: 0x0000000083200000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (3 events):
+Event: 0.067 Protecting memory [0x00007f5838db8000,0x00007f5838dbc000] with protection modes 0
+Event: 0.073 Loaded shared library /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libzip.so
+Event: 0.075 Loaded shared library /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libjimage.so
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:02 329536                             /home/martz/Downloads/WebStorm-201.7223.93/jbr/bin/java
+00601000-00602000 r--p 00001000 08:02 329536                             /home/martz/Downloads/WebStorm-201.7223.93/jbr/bin/java
+00602000-00603000 rw-p 00002000 08:02 329536                             /home/martz/Downloads/WebStorm-201.7223.93/jbr/bin/java
+00b88000-00ba9000 rw-p 00000000 00:00 0                                  [heap]
+83200000-85c00000 rw-p 00000000 00:00 0 
+85c00000-acc00000 ---p 00000000 00:00 0 
+b2000000-100000000 ---p 00000000 00:00 0 
+7f581cf2a000-7f581d19a000 rwxp 00000000 00:00 0 
+7f581d19a000-7f581d4b9000 ---p 00000000 00:00 0 
+7f581d4b9000-7f581d729000 rwxp 00000000 00:00 0 
+7f581d729000-7f58249f1000 ---p 00000000 00:00 0 
+7f58249f1000-7f5824c61000 rwxp 00000000 00:00 0 
+7f5824c61000-7f582bf2a000 ---p 00000000 00:00 0 
+7f582bf2a000-7f5830000000 r--s 00000000 08:02 329515                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/modules
+7f5830000000-7f5830045000 rw-p 00000000 00:00 0 
+7f5830045000-7f5834000000 ---p 00000000 00:00 0 
+7f5834e34000-7f58351d4000 rw-p 00000000 00:00 0 
+7f58351d4000-7f58355a6000 ---p 00000000 00:00 0 
+7f58355a6000-7f58355ac000 rw-p 00000000 00:00 0 
+7f58355ac000-7f5835692000 ---p 00000000 00:00 0 
+7f5835692000-7f5835697000 rw-p 00000000 00:00 0 
+7f5835697000-7f583577d000 ---p 00000000 00:00 0 
+7f583577d000-7f5835798000 r-xp 00000000 08:02 329493                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libjimage.so
+7f5835798000-7f5835998000 ---p 0001b000 08:02 329493                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libjimage.so
+7f5835998000-7f583599a000 r--p 0001b000 08:02 329493                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libjimage.so
+7f583599a000-7f583599b000 rw-p 0001d000 08:02 329493                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libjimage.so
+7f583599b000-7f58359a2000 r-xp 00000000 08:02 329514                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libzip.so
+7f58359a2000-7f5835ba1000 ---p 00007000 08:02 329514                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libzip.so
+7f5835ba1000-7f5835ba2000 r--p 00006000 08:02 329514                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libzip.so
+7f5835ba2000-7f5835ba3000 rw-p 00007000 08:02 329514                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libzip.so
+7f5835ba3000-7f5835bad000 r-xp 00000000 08:02 179926                     /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f5835bad000-7f5835dac000 ---p 0000a000 08:02 179926                     /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f5835dac000-7f5835dad000 r--p 00009000 08:02 179926                     /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f5835dad000-7f5835dae000 rw-p 0000a000 08:02 179926                     /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f5835dae000-7f5835db9000 r-xp 00000000 08:02 179913                     /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f5835db9000-7f5835fb8000 ---p 0000b000 08:02 179913                     /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f5835fb8000-7f5835fb9000 r--p 0000a000 08:02 179913                     /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f5835fb9000-7f5835fba000 rw-p 0000b000 08:02 179913                     /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f5835fba000-7f5835fd1000 r-xp 00000000 08:02 179930                     /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f5835fd1000-7f58361d0000 ---p 00017000 08:02 179930                     /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f58361d0000-7f58361d1000 r--p 00016000 08:02 179930                     /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f58361d1000-7f58361d2000 rw-p 00017000 08:02 179930                     /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f58361d2000-7f58361d4000 rw-p 00000000 00:00 0 
+7f58361d4000-7f58361dd000 r-xp 00000000 08:02 179929                     /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f58361dd000-7f58363dc000 ---p 00009000 08:02 179929                     /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f58363dc000-7f58363dd000 r--p 00008000 08:02 179929                     /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f58363dd000-7f58363de000 rw-p 00009000 08:02 179929                     /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f58363de000-7f5836407000 r-xp 00000000 08:02 329483                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libjava.so
+7f5836407000-7f5836606000 ---p 00029000 08:02 329483                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libjava.so
+7f5836606000-7f5836607000 r--p 00028000 08:02 329483                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libjava.so
+7f5836607000-7f5836609000 rw-p 00029000 08:02 329483                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libjava.so
+7f5836609000-7f5836616000 r-xp 00000000 08:02 329513                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libverify.so
+7f5836616000-7f5836815000 ---p 0000d000 08:02 329513                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libverify.so
+7f5836815000-7f5836817000 r--p 0000c000 08:02 329513                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libverify.so
+7f5836817000-7f5836818000 rw-p 0000e000 08:02 329513                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/libverify.so
+7f5836818000-7f583681f000 r-xp 00000000 08:02 179927                     /lib/x86_64-linux-gnu/librt-2.19.so
+7f583681f000-7f5836a1e000 ---p 00007000 08:02 179927                     /lib/x86_64-linux-gnu/librt-2.19.so
+7f5836a1e000-7f5836a1f000 r--p 00006000 08:02 179927                     /lib/x86_64-linux-gnu/librt-2.19.so
+7f5836a1f000-7f5836a20000 rw-p 00007000 08:02 179927                     /lib/x86_64-linux-gnu/librt-2.19.so
+7f5836a20000-7f5836b25000 r-xp 00000000 08:02 179911                     /lib/x86_64-linux-gnu/libm-2.19.so
+7f5836b25000-7f5836d24000 ---p 00105000 08:02 179911                     /lib/x86_64-linux-gnu/libm-2.19.so
+7f5836d24000-7f5836d25000 r--p 00104000 08:02 179911                     /lib/x86_64-linux-gnu/libm-2.19.so
+7f5836d25000-7f5836d26000 rw-p 00105000 08:02 179911                     /lib/x86_64-linux-gnu/libm-2.19.so
+7f5836d26000-7f5837d4f000 r-xp 00000000 08:02 329524                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/server/libjvm.so
+7f5837d4f000-7f5837f4e000 ---p 01029000 08:02 329524                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/server/libjvm.so
+7f5837f4e000-7f583800d000 r--p 01028000 08:02 329524                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/server/libjvm.so
+7f583800d000-7f5838047000 rw-p 010e7000 08:02 329524                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/server/libjvm.so
+7f5838047000-7f583809d000 rw-p 00000000 00:00 0 
+7f583809d000-7f583825b000 r-xp 00000000 08:02 179925                     /lib/x86_64-linux-gnu/libc-2.19.so
+7f583825b000-7f583845b000 ---p 001be000 08:02 179925                     /lib/x86_64-linux-gnu/libc-2.19.so
+7f583845b000-7f583845f000 r--p 001be000 08:02 179925                     /lib/x86_64-linux-gnu/libc-2.19.so
+7f583845f000-7f5838461000 rw-p 001c2000 08:02 179925                     /lib/x86_64-linux-gnu/libc-2.19.so
+7f5838461000-7f5838466000 rw-p 00000000 00:00 0 
+7f5838466000-7f5838469000 r-xp 00000000 08:02 179915                     /lib/x86_64-linux-gnu/libdl-2.19.so
+7f5838469000-7f5838668000 ---p 00003000 08:02 179915                     /lib/x86_64-linux-gnu/libdl-2.19.so
+7f5838668000-7f5838669000 r--p 00002000 08:02 179915                     /lib/x86_64-linux-gnu/libdl-2.19.so
+7f5838669000-7f583866a000 rw-p 00003000 08:02 179915                     /lib/x86_64-linux-gnu/libdl-2.19.so
+7f583866a000-7f5838679000 r-xp 00000000 08:02 329461                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/jli/libjli.so
+7f5838679000-7f5838878000 ---p 0000f000 08:02 329461                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/jli/libjli.so
+7f5838878000-7f5838879000 r--p 0000e000 08:02 329461                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/jli/libjli.so
+7f5838879000-7f583887a000 rw-p 0000f000 08:02 329461                     /home/martz/Downloads/WebStorm-201.7223.93/jbr/lib/jli/libjli.so
+7f583887a000-7f5838893000 r-xp 00000000 08:02 179577                     /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f5838893000-7f5838a92000 ---p 00019000 08:02 179577                     /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f5838a92000-7f5838a93000 r--p 00018000 08:02 179577                     /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f5838a93000-7f5838a94000 rw-p 00019000 08:02 179577                     /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f5838a94000-7f5838a98000 rw-p 00000000 00:00 0 
+7f5838a98000-7f5838ab0000 r-xp 00000000 08:02 136199                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f5838ab0000-7f5838caf000 ---p 00018000 08:02 136199                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f5838caf000-7f5838cb0000 r--p 00017000 08:02 136199                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f5838cb0000-7f5838cb1000 rw-p 00018000 08:02 136199                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7f5838cb1000-7f5838cd4000 r-xp 00000000 08:02 179922                     /lib/x86_64-linux-gnu/ld-2.19.so
+7f5838dac000-7f5838db1000 rw-p 00000000 00:00 0 
+7f5838db1000-7f5838db8000 ---p 00000000 00:00 0 
+7f5838db8000-7f5838dbc000 ---p 00000000 00:00 0 
+7f5838dbc000-7f5838ebe000 rw-p 00000000 00:00 0 
+7f5838ec7000-7f5838ec9000 rw-p 00000000 00:00 0 
+7f5838ec9000-7f5838ed1000 rw-s 00000000 08:02 735462                     /tmp/hsperfdata_martz/5540
+7f5838ed1000-7f5838ed2000 ---p 00000000 00:00 0 
+7f5838ed2000-7f5838ed3000 r--p 00000000 00:00 0 
+7f5838ed3000-7f5838ed4000 r--p 00022000 08:02 179922                     /lib/x86_64-linux-gnu/ld-2.19.so
+7f5838ed4000-7f5838ed5000 rw-p 00023000 08:02 179922                     /lib/x86_64-linux-gnu/ld-2.19.so
+7f5838ed5000-7f5838ed6000 rw-p 00000000 00:00 0 
+7ffd94f4e000-7ffd94f6f000 rw-p 00000000 00:00 0                          [stack]
+7ffd94fb5000-7ffd94fb7000 r--p 00000000 00:00 0                          [vvar]
+7ffd94fb7000-7ffd94fb9000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+java_command: org.jetbrains.git4idea.http.GitAskPassApp Username for 'https://github.com': 
+java_class_path (initial): /home/martz/Downloads/WebStorm-201.7223.93/plugins/git4idea/lib/git4idea-rt.jar:/home/martz/Downloads/WebStorm-201.7223.93/lib/xmlrpc-2.0.1.jar:/home/martz/Downloads/WebStorm-201.7223.93/lib/commons-codec-1.14.jar:/home/martz/Downloads/WebStorm-201.7223.93/lib/util.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 2                                         {product} {ergonomic}
+   size_t InitialHeapSize                          = 132120576                                 {product} {ergonomic}
+   size_t MaxHeapSize                              = 2095054848                                {product} {ergonomic}
+   size_t MaxNewSize                               = 698351616                                 {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 196608                                    {product} {ergonomic}
+   size_t NewSize                                  = 44040192                                  {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5825164                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122916538                              {pd product} {ergonomic}
+   size_t OldSize                                  = 88080384                                  {product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122916538                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseSerialGC                              = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=/usr/lib/git-core:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xd635a0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xd635a0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0xd635a0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0xb685f0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0xb685f0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0xd635a0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR2: [libjvm.so+0xb68480], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=14.04
+DISTRIB_CODENAME=trusty
+DISTRIB_DESCRIPTION="Ubuntu 14.04.6 LTS"
+uname:Linux 4.2.0-42-generic #49~14.04.1-Ubuntu SMP Wed Jun 29 20:22:11 UTC 2016 x86_64
+libc:glibc 2.19 NPTL 2.19 
+rlimit: STACK 8192k, CORE 0k, NPROC 31807, NOFILE 4096, AS infinity, DATA infinity, FSIZE infinity
+load average:10.50 3.78 1.37
+
+/proc/meminfo:
+MemTotal:        8176120 kB
+MemFree:          121360 kB
+MemAvailable:      82824 kB
+Buffers:             772 kB
+Cached:           578444 kB
+SwapCached:            0 kB
+Active:          7302560 kB
+Inactive:         564660 kB
+Active(anon):    7289092 kB
+Inactive(anon):   551140 kB
+Active(file):      13468 kB
+Inactive(file):    13520 kB
+Unevictable:          64 kB
+Mlocked:              64 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               272 kB
+Writeback:            20 kB
+AnonPages:       7288244 kB
+Mapped:           539496 kB
+Shmem:            552052 kB
+Slab:              92960 kB
+SReclaimable:      64880 kB
+SUnreclaim:        28080 kB
+KernelStack:        8512 kB
+PageTables:        51620 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     4088060 kB
+Committed_AS:   10152672 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       22688 kB
+VmallocChunk:   34359705596 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   2271232 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      100288 kB
+DirectMap2M:     8288256 kB
+
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads):
+63615
+
+
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have):
+65530
+
+
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers):
+32768
+
+
+
+KVM virtualization detected
+Steal ticks since vm start: 0
+Steal ticks percentage since vm start:  0.000
+
+CPU:total 1 (initial active 1) (1 cores per cpu, 1 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, tsc, tscinvbit, tscinv
+CPU Model and flags from /proc/cpuinfo:
+model name	: Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx rdrand hypervisor lahf_lm
+
+Memory: 4k page, physical 8176120k(121360k free), swap 0k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.6+8-b765.40) for linux-amd64 JRE (11.0.6+8-b765.40), built on Apr 20 2020 11:45:57 by "" with gcc 8.3.1 20190311 (Red Hat 8.3.1-3)
+
+END.
