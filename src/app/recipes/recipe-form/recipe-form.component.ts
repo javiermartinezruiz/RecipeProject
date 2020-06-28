@@ -1,8 +1,13 @@
+import { DeleteRecipe } from './../store/recipe.actions';
+import { map, switchMap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Recipe} from "../recipe.model";
-import {RecipeService} from "../recipe.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Subscription} from "rxjs";
+import * as fromApp from '../../store/app.reducer';
+import * as RecipesActions from '../store/recipe.actions';
+import * as ShoppingActions from '../../shopping/store/shopping.actions';
 
 @Component({
   selector: 'app-recipe-form',
@@ -15,17 +20,28 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   recipe: Recipe;
   id: number;
 
-  constructor(private recipeService: RecipeService,
+  constructor(
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
-    this.subscription = this.activatedRoute.params.subscribe(
-      (params: Params) => {
-        this.id = +params["id"];
-        this.recipe = this.recipeService.getRecipeById(+params['id']);
-      }
-    );
+    this.subscription = this.activatedRoute.params.pipe(
+        map(params => {
+          return +params['id'];
+        }),
+        switchMap(id => {
+          this.id = id;
+          return this.store.select('recipes');
+        }),
+        map(recipesState => {
+          return recipesState.recipes.find((recipe, index) => {
+            return index === this.id;
+          });
+        })
+      ).subscribe(recipe => {
+          this.recipe = recipe;
+      });
   }
 
   ngOnDestroy() {
@@ -36,7 +52,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
 
   onAddToShoppingList(){
     console.log('Adding ingredients: ', this.recipe.ingredients);
-    this.recipeService.replaceIngredients(this.recipe.ingredients);
+    this.store.dispatch(new ShoppingActions.AddIngredients(this.recipe.ingredients));
   }
 
   onEditRecipe(){
@@ -47,7 +63,8 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   onDeleteRecipe(){
     //Another way using the active route
     //const index = this.activatedRoute.snapshot.params.id;
-    this.recipeService.deleteRecipe(this.id);
+    //this.recipeService.deleteRecipe(this.id);
+    this.store.dispatch(new RecipesActions.DeleteRecipe(this.id));
     this.router.navigate(['/recipes']);
   }
 
